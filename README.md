@@ -6,20 +6,18 @@ A simple Python 3 CLI for validating a Google Play Purchase Token via the Google
 
 
 ```
-./google_token_validator.py  /path/to/base64_encoded_receipt
+./google_token_validator.py  /path/to/google_service_credentials.json [package_name] [product_id] [purchase_token]
 ```
 
 ### Purchase token is for a onetime purchase
 
-This is necessary to receive a purchase response for a purchase tokens representing a one time purchase
-
 
 ```
-./google_token_validator.py  /path/to/base64_encoded_receipt -s your_app_shared_secret
+./google_token_validator.py  ./google_token_validator.py  /path/to/google_service_credentials.json [package_name] [product_id] [purchase_token] --onetime
 ```
 
-### Don't print responseBody to console
+### Don't print response to console
 
 ```
-./google_token_validator.py  /path/to/base64_encoded_receipt --quiet
+./google_token_validator.py /path/to/google_service_credentials.json [package_name] [product_id] [purchase_token] --quiet
 ```
