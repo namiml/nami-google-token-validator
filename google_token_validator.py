@@ -73,9 +73,11 @@ def verify_token(service_credentials_path, package_name, product_id, purchase_to
             else:
                 message = "Unknown error"
 
+            # If this message is Invalid Value, it may mean a subscription token sent to the onetime purchase API
+            # or a onetime purchase token sent to the subscription API
             print(f"{STATUS_CODE_EMOJI[status_code]} {message}")
     else:
-        print(f"{STATUS_CODE_EMOJI[status_code]} Purchase Token is valid")
+        print(f"{STATUS_CODE_EMOJI[200]} Purchase Token is valid")
         if show_response:
             print(response)
 
@@ -83,7 +85,6 @@ def verify_token(service_credentials_path, package_name, product_id, purchase_to
 if __name__ == "__main__":
     help_message = "google_token_validator.py /path/to/service_credentials.json [package_name] [product_id] [purchase_token] <OPTIONAL: --onetime --quiet>"
 
-    print(len(sys.argv))
     if len(sys.argv) < 5:
         print(help_message)
         sys.exit(2)
@@ -98,7 +99,7 @@ if __name__ == "__main__":
     show_response = True
 
     try:
-        opts, args = getopt.getopt(sys.argv[5:], ["onetime", "quiet"])
+        opts, args = getopt.getopt(sys.argv[5:], "", ["onetime", "quiet"])
     except getopt.GetoptError:
         print(help_message)
         sys.exit(2)
