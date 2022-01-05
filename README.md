@@ -2,6 +2,13 @@
 
 A simple Python 3 CLI for validating a Google Play Purchase Token via the Google Developer API.
 
+
+To install the Google Developer APIs for Python:
+
+```
+pip install google-api-python-client
+```
+
 ### Purchase token is for a subscription purchase
 
 
